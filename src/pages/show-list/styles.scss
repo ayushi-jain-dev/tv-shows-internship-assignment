@@ -2,9 +2,18 @@
   .shows-list {
     display: flex;
     flex-wrap: wrap;
+    padding-left: 0;
     .show-item {
       text-decoration: none;
       width: 30%;
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
+
+      @media only screen and (min-width: 600px) and (max-width: 800px) {
+        width: 48%;
+      }
 
       .card-img-top {
         width: 100%;

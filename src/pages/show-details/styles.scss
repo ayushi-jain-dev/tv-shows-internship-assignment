@@ -1,13 +1,32 @@
 .show-details-page {
-  .show-image {
-    width: 400px;
+  display: flex;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
   }
-.booktickets:hover{
-  text-decoration: underline;
-  text-decoration-color: #86444a;
-}
-.link{
-  text-decoration: none;
-  color: black;
-}
+
+  .content-wrapper {
+    margin-left: 40px;
+
+    @media only screen and (max-width: 600px) {
+      margin-left: 0;
+    }
+  }
+
+  .show-image {
+    width: 350px;
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+    @media only screen and (min-width: 600px) and (max-width: 800px) {
+      width: 50%;
+    }
+  }
+
+  .link {
+    text-decoration: none;
+    color: black;
+  }
 }

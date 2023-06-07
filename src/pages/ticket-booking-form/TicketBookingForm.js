@@ -38,7 +38,7 @@ const TicketBookingForm = () => {
 
 	return (
 		<main className="ticket-booking-form-page container my-5">
-			<h2 className="mb-3">Book Tickets</h2>
+			<h2 className="mb-3">Book Your Tickets</h2>
 			<p>
 				<strong>Movie Name: </strong>
 				{show?.name}</p>
