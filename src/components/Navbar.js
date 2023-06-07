@@ -1,13 +1,8 @@
 import React from "react";
-import { Link,useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () =>  {
   let location= useLocation();
-  let navigate = useNavigate();
-  const handleLogout=() =>{
-    localStorage.removeItem('token')
-    navigate('/login')
-  }
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-secondary bg-dark" data-bs-theme="dark">
@@ -31,11 +26,6 @@ const Navbar = () =>  {
             <li className="nav-item">
               <Link className={`nav-link ${(location.pathname === "/shows" || location.pathname === "/") && "active"}`} to="/shows">
                 Shows
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className={`nav-link ${location.pathname==="/about" && "active"}`} to="/about">
-                About
               </Link>
             </li>
           </ul>

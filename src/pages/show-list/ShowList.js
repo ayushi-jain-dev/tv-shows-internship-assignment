@@ -30,13 +30,16 @@ const ShowList = () => {
 			<ul className="shows-list gap-4">
 				{shows.map(({show}) => (
 					<li className="show-item list-unstyled card" key={show.id}>
-						<img src={show.image.original} className="card-img-top" alt={show.name} />
+						<div style={{display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: '10px', top:'10px'}}>
+					<a target="_blank" rel="noreferrer" href={show?.officialSite}><span className=" badge rounded-pill bg-warning"
+								style={{left: '85%', zIndex: '1'}}>{show?.network?.name}</span></a></div>
+						<img src={show?.image?.original} className="card-img-top" alt={show.name} />
 						<div className="card-body">
-							<h5 className="card-title">{show.name}</h5>
+							<h5 className="card-title"><a className="link" target="_blank" rel="noreferrer" href={show?.officialSite}>{show.name}</a></h5>
 							<p className="card-text">
 								<strong>Genres: </strong>
 								{show.genres.map((genre, index) => (
-									<span key={genre}>{genre}{index !== show.genres.length - 1 && ', '}</span>
+									<span className="genre" key={genre}>{genre}{index !== show.genres.length - 1 && ', '}</span>
 								))}
 							</p>
 							<p>
@@ -53,7 +56,7 @@ const ShowList = () => {
 									{show.rating.average}
 								</p>
 							)}
-							{/* Add more show details as needed */}
+
 							<button type="button" className="btn btn-dark" onClick={() => navigateToShowDetails(show.id)}>View
 								Details
 							</button>

@@ -11,6 +11,16 @@
         height: 500px;
         object-fit: cover;
       }
+      .container{
+        text-align: right;
+      }
     }
+  }
+  .genre:hover{
+    text-decoration: underline;
+  }
+  .link{
+    text-decoration: none;
+    color: black;
   }
 }

@@ -26,8 +26,8 @@ const ShowDetails = () => {
 
 	return (
 		<main className="show-details-page container mb-5">
-			<img className="show-image mt-4" src={show.image.original} alt={show.name} />
-			<h2 className="my-4">{show.name}</h2>
+			<img className="show-image mt-4" src={show?.image?.original} alt={show?.name} />
+			<h2 className="my-4"><a className="link" target="_blank" rel="noreferrer"  href={show?.officialSite}>{show?.name}</a></h2>
 			{show ? (
 				<div>
 					<p className="card-text">
@@ -50,17 +50,24 @@ const ShowDetails = () => {
 							{show.rating.average}
 						</p>
 					)}
+					{show?.officialSite &&<p className="card-text link">
+						<strong>Network Official Site: </strong>
+						 <a target="_blank" rel="noreferrer" href={show?.officialSite}>{show?.officialSite}</a>
+					</p>}
+					<p className="card-text">
+						<strong>Runtime: </strong>
+						{show.averageRuntime} minutes
+					</p>
 					<p>
 						<strong>Type: </strong>
 						{show.type}
 					</p>
-					{/* Add more show details as needed */}
 					<div dangerouslySetInnerHTML={{ __html: show.summary }} />
 				</div>
 			) : (
 				<p>Loading show details...</p>
 			)}
-			<button type="button" className="btn btn-info" onClick={() => navigateToTicketBookingForm(show.id)}>Book a Movie Ticket</button>
+			<button type="button" className="btn btn-info booktickets" onClick={() => navigateToTicketBookingForm(show.id)}>Book a Movie Ticket</button>
 		</main>
 	)
 }
