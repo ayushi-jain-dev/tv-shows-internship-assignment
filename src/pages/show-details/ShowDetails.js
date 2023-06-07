@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
+import './styles.scss';
 
-const ShowDetails = ({showId}) => {
-
+const ShowDetails = () => {
 	const [show, setShow] = useState(null);
 	let navigate = useNavigate();
+	let { showId } = useParams();
 
 	useEffect(() => {
 		fetch(`https://api.tvmaze.com/shows/${showId}`)
@@ -18,21 +19,48 @@ const ShowDetails = ({showId}) => {
 		navigate(`/booking/${showId}`);
 	};
 
+	const formatDate = (date) => {
+		const [year, month, day] = date.split('-');
+		return `${month}-${day}-${year}`;
+	}
+
 	return (
-		<main className="show-details-page">
-			<h2>Show Details</h2>
+		<main className="show-details-page container mb-5">
+			<img className="show-image mt-4" src={show.image.original} alt={show.name} />
+			<h2 className="my-4">{show.name}</h2>
 			{show ? (
-				<>
-					<h3>{show.name}</h3>
-					<p>Type: {show.type}</p>
-					<p>Language: {show.language}</p>
+				<div>
+					<p className="card-text">
+						<strong>Genres: </strong>
+						{show.genres.map((genre, index) => (
+							<span key={genre}>{genre}{index !== show.genres.length - 1 && ', '}</span>
+						))}
+					</p>
+					<p>
+						<strong>Premiered On: </strong>
+						{formatDate(show.premiered)}
+					</p>
+					<p className="card-text">
+						<strong>Language: </strong>
+						{show.language}
+					</p>
+					{show.rating.average && (
+						<p className="card-text">
+							<strong>Rating: </strong>
+							{show.rating.average}
+						</p>
+					)}
+					<p>
+						<strong>Type: </strong>
+						{show.type}
+					</p>
 					{/* Add more show details as needed */}
-					<p>Summary: {show.summary}</p>
-				</>
+					<div dangerouslySetInnerHTML={{ __html: show.summary }} />
+				</div>
 			) : (
 				<p>Loading show details...</p>
 			)}
-			<button onClick={() => navigateToTicketBookingForm(show.id)}>Book a Movie Ticket</button>
+			<button type="button" className="btn btn-info" onClick={() => navigateToTicketBookingForm(show.id)}>Book a Movie Ticket</button>
 		</main>
 	)
 }

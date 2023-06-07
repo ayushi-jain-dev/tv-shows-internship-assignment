@@ -30,7 +30,7 @@ const ShowList = () => {
 			<ul className="shows-list gap-4">
 				{shows.map(({show}) => (
 					<li className="show-item list-unstyled card" key={show.id}>
-						<img src={show.image.original} className="card-img-top" alt="..."/>
+						<img src={show.image.original} className="card-img-top" alt={show.name} />
 						<div className="card-body">
 							<h5 className="card-title">{show.name}</h5>
 							<p className="card-text">
