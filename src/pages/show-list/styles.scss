@@ -1,0 +1,16 @@
+.show-list-page {
+  .shows-list {
+    display: flex;
+    flex-wrap: wrap;
+    .show-item {
+      text-decoration: none;
+      width: 30%;
+
+      .card-img-top {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+      }
+    }
+  }
+}
